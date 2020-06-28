@@ -12,23 +12,27 @@ public class Main {
         Stack stack = new Stack();
 
         for (char i : string.toCharArray()) {
-            if (i == '(' || i == 'x' || i == '+') {
+            if (i == '(' || i == '{' || i == '[' || i == 'x' || i == '+') {
                 stack.push(i);
             } else {
-                if (i == ')') {
-                    String newString = "";
-                    while (true) {
-                        char topElement = stack.top();
-                        stack.pop();
-                        if (topElement == '(' || stack.getCountStack() == 0) {
-                            if (!checkSubstring(newString.toString())) {
+                String newString = "";
+                while (true) {
+                    char topElement = stack.top();
+                    stack.pop();
+                    if (topElement == '(' && i == ')' || topElement == '{' && i == '}' || topElement == '[' && i == ']') {
+                        if (!checkSubstring(newString)) {
+                            return false;
+                        }
+                        stack.push('x');
+                        break;
+                    } else {
+                        if (stack.getCountStack() == 0) {
+                            if (!checkSubstring(newString)) {
                                 return false;
                             }
-                            stack.push('x');
-                            break;
                         }
-                        newString += topElement;
                     }
+                    newString += topElement;
                 }
             }
         }
@@ -92,7 +96,7 @@ public class Main {
         Scanner in = new Scanner(System.in);
         your_choose = in.nextInt();
 
-        if (your_choose==1){
+        if (your_choose == 1) {
             System.out.println("Input string");
             Scanner in2 = new Scanner(System.in);
             String string = in2.nextLine();
@@ -100,7 +104,7 @@ public class Main {
             mainCheck(string);
         }
 
-        if(your_choose==2) {
+        if (your_choose == 2) {
             try {
                 // нужно указать путь к файлу
                 BufferedReader bufferedReader = new BufferedReader(new FileReader("C:\\Users\\Alex\\Desktop\\test.txt"));
@@ -118,10 +122,10 @@ public class Main {
 
     public static void mainCheck(String name) {
         if (checkExtraneousSigns(name)) {
-            name = name.replace('{', '(');
-            name = name.replace('[', '(');
-            name = name.replace('}', ')');
-            name = name.replace(']', ')');
+//            name = name.replace('{', '(');
+//            name = name.replace('[', '(');
+//            name = name.replace('}', ')');
+//            name = name.replace(']', ')');
             name = name.replace('y', 'x');
             name = name.replace('z', 'x');
             name = name.replace('-', '+');
