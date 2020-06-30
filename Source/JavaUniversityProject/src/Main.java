@@ -96,7 +96,7 @@ public class Main {
         Scanner in = new Scanner(System.in);
         your_choose = in.nextInt();
 
-        if (your_choose == 1) {
+        if (your_choose == 2) {
             System.out.println("Input string");
             Scanner in2 = new Scanner(System.in);
             String string = in2.nextLine();
@@ -104,7 +104,7 @@ public class Main {
             mainCheck(string);
         }
 
-        if (your_choose == 2) {
+        if (your_choose == 1) {
             try {
                 // нужно указать путь к файлу
                 BufferedReader bufferedReader = new BufferedReader(new FileReader("C:\\Users\\Alex\\Desktop\\test.txt"));

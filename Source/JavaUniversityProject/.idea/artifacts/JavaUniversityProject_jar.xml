@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="JavaUniversityProject:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/JavaUniversityProject_jar</output-path>
+    <root id="archive" name="JavaUniversityProject.jar">
+      <element id="module-output" name="JavaUniversityProject" />
+    </root>
+  </artifact>
+</component>
